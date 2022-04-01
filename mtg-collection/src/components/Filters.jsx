@@ -18,16 +18,26 @@ export default function Filters() {
           </section>
           <section className="search-for-color">
             <h3>Search for color:</h3>
-            <label for="">Black</label>
-            <input type="checkbox" id="black" />
-            <label for="">Red</label>
-            <input type="checkbox" id="red" />
-            <label for="">Green</label>
-            <input type="checkbox" id="green" />
-            <label for="">Blue</label>
-            <input type="checkbox" id="blue" />
-            <label for="">White</label>
-            <input type="checkbox" id="white" />
+            <div className='color-label'>
+              <label for="">Black</label>
+              <input type="checkbox" id="black" />
+            </div>
+            <div className='color-label'>
+              <label for="">Red</label>
+              <input type="checkbox" id="red" />
+            </div>
+            <div className='color-label'>
+              <label for="">Green</label>
+              <input type="checkbox" id="green" />
+            </div>
+            <div className='color-label'>
+              <label for="">Blue</label>
+              <input type="checkbox" id="blue" />
+            </div>
+            <div className='color-label'>
+              <label for="">White</label>
+              <input type="checkbox" id="white" />
+            </div>
           </section>
           <button id="search-btn">Show cards</button>
         </form>
