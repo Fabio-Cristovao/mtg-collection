@@ -11,19 +11,20 @@ import Navbar from './Navbar'
 export default function Dashboard() {
 
   return (
-    <>
-      <section>
-        <Navbar />
-      </section>
-      <div className='container'>
 
+    <>
+      <div className="navbar-container">
+        <Navbar />
+      </div>
+      <div className='container'>
         <Header />
         <section className='main-content-container'>
           {<SearchCards />}
           {/*  <Filters />
-          <CardGrid /> */}
+            <CardGrid /> */}
         </section>
       </div>
     </>
+
   )
 }
