@@ -16,7 +16,6 @@ export default function SearchCards() {
           <input className='search-cards-input' type="text" name='search-cards-input' placeholder="Ex: Chandra Nalaar" />
         </section>
         <section>
-
         </section>
         <section className='search-cards-checkbox'>
           <label htmlFor="search-cards-checkbox" className='search-cards-label'>
@@ -70,6 +69,7 @@ export default function SearchCards() {
             </article>
           </div>
         </section>
+        <button className="form-submit-btn">Search</button>
       </form>
     </section>
   )
