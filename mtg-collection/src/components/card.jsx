@@ -1,10 +1,15 @@
 import React from 'react'
 
-export default function card() {
-  return (
-    <div>
+export default function Card(props) {
 
-    </div>
+  /* let { name, imageUrl } = cards; */
+
+  return (
+    <article className='grid-card'>
+      <img src="./images/mtg-card.jpg" alt="" />
+      <button className='card-button'>Add to your collection</button>
+      <button className='card-button'>Add to favourites</button>
+    </article>
   )
 }
 

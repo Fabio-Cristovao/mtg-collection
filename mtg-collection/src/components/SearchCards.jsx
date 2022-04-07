@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React, { useState } from 'react';
 export default function SearchCards() {
 
 
@@ -13,7 +12,11 @@ export default function SearchCards() {
             className='search-cards-label'>
             Search by name :
           </label>
-          <input className='search-cards-input' type="text" name='search-cards-input' placeholder="Ex: Chandra Nalaar" />
+          <input
+            className='search-cards-input'
+            type="text" name='search-cards-input' placeholder="Ex: Chandra Nalaar"
+
+          />
         </section>
         <section>
         </section>
@@ -69,9 +72,10 @@ export default function SearchCards() {
             </article>
           </div>
         </section>
-        <button className="form-submit-btn">Search</button>
+        <button
+          className="form-submit-btn"
+        >Search</button>
       </form>
     </section>
   )
 }
-
