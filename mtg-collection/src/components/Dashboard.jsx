@@ -16,8 +16,14 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  let color = '';
+  let cardName = '';
+
+
+  let url = `https://api.magicthegathering.io/v1/cards${color}${cardName}`
+
   useEffect(() => {
-    fetch('https://api.magicthegathering.io/v1/cards')
+    fetch(url)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -26,6 +32,7 @@ export default function Dashboard() {
       })
       .then((data) => {
         setData(data.cards);
+        console.log(data.cards);
       })
       .catch((error) => {
         console.error("Error fetching data: ", error);

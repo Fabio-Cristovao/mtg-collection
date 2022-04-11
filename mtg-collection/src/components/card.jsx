@@ -7,7 +7,7 @@ export default function Card(props) {
   return (
     <article className='grid-card'>
       <img src="./images/mtg-card.jpg" alt="" />
-      <button className='card-button'>Add to your collection</button>
+      <button className='card-button'>Add to collection</button>
       <button className='card-button'>Add to favourites</button>
     </article>
   )
