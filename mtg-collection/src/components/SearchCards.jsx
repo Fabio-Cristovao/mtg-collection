@@ -4,12 +4,9 @@ export default function SearchCards() {
 
   // getting userinput to add to the url
 
-  const getUrl = (inputName, inputColor) => {
-    let url = '';
+  let cardName = '';
+  let cardColor = '';
 
-
-
-  }
 
   let url = `https://api.magicthegathering.io/v1/cards${cardName}${cardColor}`
 
@@ -26,11 +23,6 @@ export default function SearchCards() {
           <input
             className='search-cards-input'
             type="text" name='search-cards-input' placeholder="Ex: Chandra Nalaar"
-            value={inputValues}
-            onChange={handleOnChange}
-
-
-
           />
         </section>
         <section>
