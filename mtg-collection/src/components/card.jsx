@@ -2,11 +2,11 @@ import React from 'react'
 
 export default function Card(props) {
 
-  /* let { name, imageUrl } = cards; */
+  const { id, name, imageUrl } = props.card;
 
   return (
     <article className='grid-card'>
-      <img src="./images/mtg-card.jpg" alt="" />
+      <img src={`${imageUrl}`} alt={name} />
       <button className='card-button'>Add to collection</button>
       <button className='card-button'>Add to favourites</button>
     </article>

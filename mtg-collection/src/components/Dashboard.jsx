@@ -8,44 +8,42 @@ import CardGrid from './CardGrid'
 import SearchCards from './SearchCards'
 import Navbar from './Navbar'
 import axios from 'axios'
+import cardName from './SearchCards'
+import { useDispatch } from 'react-redux'
+
 
 export default function Dashboard() {
 
-
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  let color = '';
-  let cardName = '';
-
-
-  let url = `https://api.magicthegathering.io/v1/cards${color}${cardName}`
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(url)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw response;
+    fetch('https://api.magicthegathering.io/v1/cards')
+      .then(response => response.json())
+      .then(data => {
+        dispatch({
+          type: 'GET_CARDS',
+          payLoad: data.cards
+        })
       })
-      .then((data) => {
-        setData(data.cards);
-        console.log(data.cards);
-      })
-      .catch((error) => {
-        console.error("Error fetching data: ", error);
-        setError(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-    console.log(setData)
-  }, []);
+      .catch(error => console.log('an error ocurred'))
+  }, [])
 
-  if (loading) return "Loading...";
-  if (error) return "Error!";
+  /* const [Cards, fetchCards] = useState([]);
+
+  const getData = () => {
+    fetch('https://api.magicthegathering.io/v1/cards')
+      .then((res) => res.json())
+      .then((data) => {
+        fetchCards(data)
+        console.log(data)
+      })
+  }
+
+  useEffect(() => {
+    getData()
+  }, []) */
+
+
 
   return (
     <>
@@ -55,10 +53,7 @@ export default function Dashboard() {
       <div className='container'>
         <Header />
         <SearchCards />
-        < CardGrid
-          cards={data}
-        />
-
+        < CardGrid />
       </div>
     </>
 

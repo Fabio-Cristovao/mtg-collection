@@ -1,4 +1,4 @@
-import Cards  from './constants'; 
+import Cards from './constants';
 
 const initialState = {
   cardsData: [],
@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case Cards.LOAD:
       return {
         ...state,
@@ -19,9 +19,10 @@ const reducer = (state = initialState, action) => {
         ...state,
         cardsData: action.cardsData,
         isLoading: false,
-      } 
+      }
+
     default:
-      return state; 
+      return state;
   }
 };
 

@@ -2,14 +2,18 @@ import React, { useReducer, useState } from 'react';
 
 export default function SearchCards() {
 
+  const [nameInput, setnameInput] = useState('');
+
+  const handleOnClick = (e) => {
+    let cardName = e.target.value;
+    setnameInput(cardName);
+    console.log(cardName);
+
+  }
+
+
+
   // getting userinput to add to the url
-
-  let cardName = '';
-  let cardColor = '';
-
-
-  let url = `https://api.magicthegathering.io/v1/cards${cardName}${cardColor}`
-
   return (
     <section className='search-cards-section'>
       <h3 className='search-cards-title'>Search your cards here!</h3>
@@ -23,6 +27,7 @@ export default function SearchCards() {
           <input
             className='search-cards-input'
             type="text" name='search-cards-input' placeholder="Ex: Chandra Nalaar"
+            onClick={handleOnClick}
           />
         </section>
         <section>

@@ -8,14 +8,8 @@ export default function CardGrid(props) {
     <>
       <h2 className="card-grid-title">Results</h2>
       <div className="grid-container">
-        <Card />
       </div>
     </>
-
-
-
-
-
 
   )
 }
