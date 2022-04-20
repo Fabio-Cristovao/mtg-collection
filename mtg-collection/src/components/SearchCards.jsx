@@ -1,20 +1,20 @@
 import React, { useReducer, useState } from 'react';
+import { checkboxes } from '../checkboxes';
 
 export default function SearchCards() {
+  const [nameInput, setNameInput] = useState('');
 
-  const [nameInput, setnameInput] = useState('');
+  const searchName = (name) => {
 
-  const handleOnClick = (e) => {
-    let cardName = e.target.value;
-    setnameInput(cardName);
-    console.log(cardName);
+    setNameInput(name);
 
+    let url = `https://api.magicthegathering.io/v1/cards?name=${name}`;
+
+    console.log(url)
   }
 
-
-
-  // getting userinput to add to the url
   return (
+
     <section className='search-cards-section'>
       <h3 className='search-cards-title'>Search your cards here!</h3>
       <p className='search-cards-description'>You can search by name of a card, set, or color;</p>
@@ -27,67 +27,49 @@ export default function SearchCards() {
           <input
             className='search-cards-input'
             type="text" name='search-cards-input' placeholder="Ex: Chandra Nalaar"
-            onClick={handleOnClick}
+            onChange={(e) => searchName(e.target.value)}
           />
         </section>
-        <section>
-        </section>
-        <section className='search-cards-checkbox'>
-          <label htmlFor="search-cards-checkbox" className='search-cards-label'>
-            Search by color:
-          </label>
-          <div className='search-cards-checkbox-container'>
-            <article className='search-color-element'>
-              <div className='checkbox-description'>
-                <label htmlFor="color">Swamp </label>
-                <span>
-                  <img src="./images/swamp.svg" alt="swamp mtg symbol" />
-                </span>
-              </div>
-              <input type="checkbox" name='color' />
-            </article>
-            <article className='search-color-element'>
-              <div className='checkbox-description'>
-                <label htmlFor="color">Plains </label>
-                <span>
-                  <img src="./images/plains.svg" alt="swamp mtg symbol" />
-                </span>
-              </div>
-              <input type="checkbox" name='color' />
-            </article>
-            <article className='search-color-element'>
-              <div className='checkbox-description'>
-                <label htmlFor="color">Forest </label>
-                <span>
-                  <img src="./images/forest.svg" alt="swamp mtg symbol" />
-                </span>
-              </div>
-              <input type="checkbox" name='color' />
-            </article>
-            <article className='search-color-element'>
-              <div className='checkbox-description'>
-                <label htmlFor="color">Island </label>
-                <span>
-                  <img src="./images/island.svg" alt="swamp mtg symbol" />
-                </span>
-              </div>
-              <input type="checkbox" name='color' />
-            </article>
-            <article className='search-color-element'>
-              <div className='checkbox-description'>
-                <label htmlFor="color">Mountain </label>
-                <span>
-                  <img src="./images/mountain.svg" alt="swamp mtg symbol" />
-                </span>
-              </div>
-              <input type="checkbox" name='color' />
-            </article>
-          </div>
-        </section>
-        <button
-          className="form-submit-btn"
-        >Search</button>
+      </form>
+      <form className='search-cards-checkbox'>
+        <label htmlFor="search-cards-checkbox" className='search-cards-label'>
+          Search by color:
+        </label>
+        <div className='search-cards-checkbox-container'>
+
+          {
+            checkboxes.map((checkbox) => {
+              let { name, id, value, img } = checkbox;
+              return (
+                <article
+                  key={id}
+                  className='search-color-element'>
+                  <div className='checkbox-description'>
+                    <label htmlFor="color">{name} </label>
+                    <span>
+                      <img src={`${img}`} alt={name} />
+                    </span>
+                  </div>
+                  <input
+                    type="checkbox"
+                    id={id}
+                    name='color'
+                    value={value}
+                  />
+                </article>
+              )
+            })
+          }
+        </div>
       </form>
     </section>
   )
 }
+
+
+
+
+
+
+
+

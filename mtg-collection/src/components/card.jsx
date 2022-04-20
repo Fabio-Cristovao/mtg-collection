@@ -1,8 +1,11 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
 
-export default function Card(props) {
+export default function Card({ card }) {
 
-  const { id, name, imageUrl } = props.card;
+  const { id, name, imageUrl } = card;
+
+  // const dispatch = useDispatch();
 
   return (
     <article className='grid-card'>

@@ -17,17 +17,21 @@ export default function Dashboard() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch('https://api.magicthegathering.io/v1/cards')
-      .then(response => response.json())
-      .then(data => {
+    (async function () {
+      try {
+        const resp = await fetch('https://api.magicthegathering.io/v1/cards');
+        const data = await resp.json();
+        console.log(data);
+
         dispatch({
           type: 'GET_CARDS',
-          payLoad: data.cards
-        })
-      })
-      .catch(error => console.log('an error ocurred'))
+          payLoad: data.cards,
+        });
+      } catch (error) {
+        console.log(error)
+      }
+    })();
   }, [])
-
   /* const [Cards, fetchCards] = useState([]);
 
   const getData = () => {

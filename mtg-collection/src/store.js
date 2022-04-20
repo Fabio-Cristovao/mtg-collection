@@ -1,8 +1,11 @@
-import reducer from './reducer';
-import { createStore, applyMiddleware} from 'redux';
-import thunkMiddleware from 'redux-thunk';
+import { reducer } from './reducer';
+import { createStore } from 'redux';
 
-export const store = createStore(reducer, applyMiddleware(thunkMiddleware));
+const initialState = {
+  cards: [],
+}
+
+export const store = createStore(reducer, initialState);
 
 
 
