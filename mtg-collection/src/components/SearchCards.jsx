@@ -13,6 +13,20 @@ export default function SearchCards() {
     console.log(url)
   }
 
+  const [checkedState, setCheckedState] = useState(
+    new Array(checkboxes.length).fill(false)
+  );
+
+
+  const handleOnChange = (position) => {
+    //console.log(checkedState)
+    const updatedCheckedState = checkedState.map((isChecked, index) =>
+      index === position ? !isChecked : isChecked
+    );
+
+    setCheckedState(updatedCheckedState);
+    console.log(updatedCheckedState.value);
+  }
   return (
 
     <section className='search-cards-section'>
@@ -38,8 +52,8 @@ export default function SearchCards() {
         <div className='search-cards-checkbox-container'>
 
           {
-            checkboxes.map((checkbox) => {
-              let { name, id, value, img } = checkbox;
+            checkboxes.map((checkbox, index) => {
+              let { name, id, value, img } = checkbox
               return (
                 <article
                   key={id}
@@ -51,25 +65,22 @@ export default function SearchCards() {
                     </span>
                   </div>
                   <input
+                    checked={checkedState[index]}
                     type="checkbox"
                     id={id}
                     name='color'
                     value={value}
+                    onChange={() => handleOnChange(index, value)}
                   />
                 </article>
               )
             })
+
+
           }
         </div>
       </form>
     </section>
   )
 }
-
-
-
-
-
-
-
 
