@@ -160,8 +160,8 @@ a {
   border: 3px solid #F7C873;
   border-radius: 6px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  
 }
 
 span img {

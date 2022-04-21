@@ -1,32 +1,84 @@
 import React, { useReducer, useState } from 'react';
 import { checkboxes } from '../checkboxes';
 
-export default function SearchCards() {
+export default function SearchCards(props) {
   const [nameInput, setNameInput] = useState('');
 
-  const searchName = (name) => {
+  const searchName = (nameInput) => {
 
-    setNameInput(name);
+    setNameInput(nameInput);
 
-    let url = `https://api.magicthegathering.io/v1/cards?name=${name}`;
-
-    console.log(url)
   }
 
-  const [checkedState, setCheckedState] = useState(
-    new Array(checkboxes.length).fill(false)
-  );
+  const [colors, setColors] = useState({
+    colors: [],
+  })
+
+  const handleOnChange = (e) => {
+
+    const isChecked = e.target.checked;
+
+    if (isChecked) {
+      setColors({
+        colors: [...colors.colors, e.target.value]
+      })
+
+    } else {
+      const index = colors.colors.indexOf(e.target.value);
+      colors.colors.splice(index, 1);
+      setColors({
+        colors: colors.colors,
+      })
+    }
+
+    //console.log(colors)
+  }
+
+  const onSubmit = (e) => {
+
+    e.preventDefault();
+    let searchColors = colors.colors.toString();
+
+    if (nameInput !== '' && searchColors !== '') {
+      props.fetchData(`https://api.magicthegathering.io/v1/cards?pageSize=30?name=${nameInput}?colors=${searchColors}`);
+    } else if (nameInput === '' && searchColors !== '') {
+      props.fetchData(`https://api.magicthegathering.io/v1/cards?pageSize=30?color=${searchColors}`);
+    } else if (nameInput !== '' && searchColors === '') {
+      props.fetchData(`https://api.magicthegathering.io/v1/cards?pageSize=30?name=${nameInput}`);
+    } else {
+      props.fetchData('https://api.magicthegathering.io/v1/cards?random?pageSize=30');
+    }
+
+  }
 
 
-  const handleOnChange = (position) => {
+
+  // get the name and color input from the user
+
+
+
+
+
+  /*  const [checkedState, setCheckedState] = useState(
+     checkboxes
+   )
+ 
+   console.log(checkedState) */
+
+
+  /* const handleOnChange = (position) => {
     //console.log(checkedState)
     const updatedCheckedState = checkedState.map((isChecked, index) =>
+
       index === position ? !isChecked : isChecked
     );
 
     setCheckedState(updatedCheckedState);
-    console.log(updatedCheckedState.value);
-  }
+
+    console.log(updatedCheckedState);
+  } */
+
+
   return (
 
     <section className='search-cards-section'>
@@ -52,32 +104,33 @@ export default function SearchCards() {
         <div className='search-cards-checkbox-container'>
 
           {
-            checkboxes.map((checkbox, index) => {
-              let { name, id, value, img } = checkbox
+            checkboxes.map((checkbox, key) => {
+              let { name, value, img, isChecked } = checkbox
               return (
                 <article
-                  key={id}
+                  key={key}
                   className='search-color-element'>
                   <div className='checkbox-description'>
                     <label htmlFor="color">{name} </label>
                     <span>
-                      <img src={`${img}`} alt={name} />
+                      <img src={`${img} `} alt={name} />
                     </span>
                   </div>
                   <input
-                    checked={checkedState[index]}
+
+                    //checked={isChecked}
                     type="checkbox"
-                    id={id}
                     name='color'
                     value={value}
-                    onChange={() => handleOnChange(index, value)}
+                    onChange={handleOnChange}
                   />
                 </article>
               )
             })
-
-
           }
+        </div>
+        <div className="submit-container">
+          <input type="submit" value='Submit' onClick={onSubmit} />
         </div>
       </form>
     </section>

@@ -1,17 +1,18 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import Card from './Card'
+import '../css/card-grid.css'
 
 export default function CardGrid() {
 
-  const cards = useSelector(state => state.cards);
+  const cards = useSelector(state => state.cards.slice([0, 50]));
 
   console.log(cards)
 
 
   return (
     <>
-      <h2 className="card-grid-title">Results</h2>
+
       <div className="grid-container">
         {
           cards.map(card => (

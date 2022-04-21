@@ -1,9 +1,12 @@
 import React from 'react'
+import CardGrid from './CardGrid'
+import '../css/card-grid.css'
 
 export default function Home() {
   return (
-    <div>
-      <h2>Home</h2>
-    </div>
+    <>
+      <h1 className='card-grid-container-title'>Cards</h1>
+      <CardGrid />
+    </>
   )
 }
