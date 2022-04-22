@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { checkboxes } from '../checkboxes'
+import CardGrid from './CardGrid';
+import GridMyCards from './GridMyCards';
 
 export default function MyCollection() {
 
@@ -28,8 +30,9 @@ export default function MyCollection() {
   return (
     <div className='my-collection-main-content'>
       <h1 className='my-collection-title'>My collection cards</h1>
-      <h3 className='filters-title'>Filters</h3>
+
       <section className='filters-section'>
+        <h3 className='filters-title'>Filters</h3>
         <div className='search-by-name-filter'>
           <h3 className='search-by-name-title'>Search by name :</h3>
           <input type="text" placeholder='search by name here...' />
@@ -73,6 +76,9 @@ export default function MyCollection() {
             <option value="">sorcery</option>
           </select>
         </div>
+      </section>
+      <section className='my-cards-grid'>
+        <GridMyCards />
       </section>
     </div >
   )
