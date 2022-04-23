@@ -4,20 +4,15 @@ import { useDispatch } from 'react-redux';
 export default function Card({ card }) {
 
   const { id, name, imageUrl } = card;
-
   const dispatch = useDispatch();
-
   const handleOnClick = () => {
+    //console.log('clicked');
+    //console.log(id);
     dispatch({
       type: 'ADD_CARD_TO_MY_COLLECTION',
-      id,
+      id
     })
   }
-
-
-
-  // const dispatch = useDispatch();
-
   return (
     <article className='grid-card'>
       <img src={`${imageUrl}`} alt={name} />

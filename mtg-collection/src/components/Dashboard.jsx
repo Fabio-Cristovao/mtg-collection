@@ -19,7 +19,8 @@ export default function Dashboard() {
   const cards = useSelector(state => state.cards)
 
 
-  const [url, setUrl] = useState('https://api.magicthegathering.io/v1/cards?contains=imageUrl')
+
+  const [url, setUrl] = useState('https://api.magicthegathering.io/v1/cards?contains=imageUrl&pageSize=40&random=true')
 
   const dispatch = useDispatch();
 
@@ -27,15 +28,14 @@ export default function Dashboard() {
 
     (async function () {
       try {
-        console.log(url)
+        // console.log(url)
         const resp = await fetch(url);
         const data = await resp.json();
         console.log(data);
         console.log(url)
-
         dispatch({
-          type: 'GET_CARDS',
-          payLoad: data.cards,
+          type: 'READ_CARDS',
+          payload: data.cards,
         });
       } catch (error) {
         console.log(error)
