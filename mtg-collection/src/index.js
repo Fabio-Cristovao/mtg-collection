@@ -12,15 +12,17 @@ import About from './components/About';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<App />}>
-          <Route index element={<Home />} />
-          <Route path='/collection' element={<MyCollection />} />
-          <Route path='/about' element={<About />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<App />}>
+            <Route index element={<Home />} />
+            <Route path='/collection' element={<MyCollection />} />
+            <Route path='/about' element={<About />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

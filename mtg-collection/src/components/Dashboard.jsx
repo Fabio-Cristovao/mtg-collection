@@ -9,12 +9,14 @@ import SearchCards from './SearchCards'
 import Navbar from './Navbar'
 import axios from 'axios'
 import cardName from './SearchCards'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
 
 
 
 export default function Dashboard() {
+
+  const cards = useSelector(state => state.cards)
 
 
   const [url, setUrl] = useState('https://api.magicthegathering.io/v1/cards?contains=imageUrl')
@@ -25,6 +27,7 @@ export default function Dashboard() {
 
     (async function () {
       try {
+        console.log(url)
         const resp = await fetch(url);
         const data = await resp.json();
         console.log(data);
@@ -64,7 +67,7 @@ export default function Dashboard() {
   return (
     <>
       <div className="navbar-container">
-        <Navbar />
+        <Navbar url={setUrl} />
       </div>
       <div className='container'>
         <Outlet>

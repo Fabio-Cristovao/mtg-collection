@@ -1,30 +1,25 @@
 export function reducer(state, action) {
 
-  if (action.type === 'GET_CARDS') {
+  // definir action que vai ler o modelo de dados dos livros  
+  if (action.type === 'READ_CARDS') {
     return {
-
-      ...state,
-      cards: [...action.payLoad],
-
+      cards: [...action.payload],
+    }
+  }
+  if (action.type === 'ADD_BOOK') {
+    return {
+      myCards: [...state.myCards, state.books.filter(b => b.id === action.id)],
     }
   }
 
-  if (action.type === 'ADD_CARD_TO_MY_COLLECTION') {
-
-    const newCard = state.cards.filter(card => {
-      if (card.id === action.id) {
-        return {
-          ...state,
-          myCards: [...state.myCards, state.myCards.push(action.newCard)],
-        }
-      }
-
-    })
-
-    return state;
-
-  }
+  return state;
 }
+
+
+
+
+
+
 
 
 

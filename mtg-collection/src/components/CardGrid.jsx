@@ -5,7 +5,7 @@ import '../css/card-grid.css'
 
 export default function CardGrid() {
 
-  const cards = useSelector(state => state.cards.slice([0, 50]));
+  const cards = useSelector(state => state.cards);
 
   console.log(cards)
 

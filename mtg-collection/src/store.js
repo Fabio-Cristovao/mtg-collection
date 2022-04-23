@@ -1,12 +1,18 @@
-import { reducer } from './reducer';
-import { createStore } from 'redux';
+import { createStore } from 'redux'
+import { reducer } from './reducer'
 
-const initialState = {
+let initialState = {
   cards: [],
   myCards: [],
 }
 
 export const store = createStore(reducer, initialState);
+
+
+
+
+
+
 
 
 
