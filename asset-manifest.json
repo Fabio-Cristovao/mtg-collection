@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mtg-ccollection/static/css/main.e222e20d.css",
+    "main.js": "/mtg-ccollection/static/js/main.1001e786.js",
+    "index.html": "/mtg-ccollection/index.html",
+    "main.e222e20d.css.map": "/mtg-ccollection/static/css/main.e222e20d.css.map",
+    "main.1001e786.js.map": "/mtg-ccollection/static/js/main.1001e786.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e222e20d.css",
+    "static/js/main.1001e786.js"
+  ]
+}
