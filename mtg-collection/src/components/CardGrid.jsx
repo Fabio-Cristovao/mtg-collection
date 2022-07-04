@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import Card from './Card'
 import '../css/card-grid.css'
+import { Modal } from 'bootstrap';
 
 export default function CardGrid() {
 
@@ -11,6 +12,7 @@ export default function CardGrid() {
   return (
     <>
       <div className="grid-container">
+        <Modal />
         {
           cards.map(card => (
             <Card

@@ -11,6 +11,7 @@ import axios from 'axios'
 import cardName from './SearchCards'
 import { useDispatch, useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
+import Popup from './Popup'
 
 
 
@@ -75,7 +76,7 @@ export default function Dashboard() {
         </Outlet>
 
         {/*  <SearchCards fetchData={setUrl} /> */}
-
+        <Popup />
         < CardGrid />
         <Header />
       </div>
